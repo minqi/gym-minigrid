@@ -734,6 +734,7 @@ class MiniGridEnv(gym.Env):
     def seed(self, seed=1337):
         # Seed the random number generator
         self.np_random, _ = seeding.np_random(seed)
+        self.level_seed = seed
         return [seed]
 
     def hash(self, size=16):
@@ -1160,7 +1161,7 @@ class MiniGridEnv(gym.Env):
 
         obs = self.gen_obs()
 
-        return obs, reward, done, {}
+        return obs, reward, done, {'level_seed': self.level_seed}
 
     def gen_obs_grid(self):
         """
