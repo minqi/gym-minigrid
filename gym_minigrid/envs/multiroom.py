@@ -21,7 +21,8 @@ class MultiRoomEnv(MiniGridEnv):
     def __init__(self,
         minNumRooms,
         maxNumRooms,
-        maxRoomSize=10
+        maxRoomSize=10,
+        gridSize=25
     ):
         assert minNumRooms > 0
         assert maxNumRooms >= minNumRooms
@@ -34,7 +35,7 @@ class MultiRoomEnv(MiniGridEnv):
         self.rooms = []
 
         super(MultiRoomEnv, self).__init__(
-            grid_size=25,
+            grid_size=gridSize,
             max_steps=self.maxNumRooms * 20
         )
 
@@ -259,6 +260,25 @@ class MultiRoomEnvN6(MultiRoomEnv):
             maxNumRooms=6
         )
 
+# Custom levels
+class MultiRoomEnvN2S4G14(MultiRoomEnv):
+    def __init__(self):
+        super().__init__(
+            minNumRooms=2,
+            maxNumRooms=2,
+            maxRoomSize=4,
+            gridSize=14
+        )
+
+class MultiRoomEnvN4S5G14(MultiRoomEnv):
+    def __init__(self):
+        super().__init__(
+            minNumRooms=4,
+            maxNumRooms=4,
+            maxRoomSize=5,
+            gridSize=14
+        )
+
 register(
     id='MiniGrid-MultiRoom-N2-S4-v0',
     entry_point='gym_minigrid.envs:MultiRoomEnvN2S4'
@@ -272,4 +292,15 @@ register(
 register(
     id='MiniGrid-MultiRoom-N6-v0',
     entry_point='gym_minigrid.envs:MultiRoomEnvN6'
+)
+
+
+# Custom levels
+register(
+    id='MiniGrid-MultiRoom-N2-S4-G14-v0',
+    entry_point='gym_minigrid.envs:MultiRoomEnvN2S4G14'
+)
+register(
+    id='MiniGrid-MultiRoom-N4-S5-G14-v0',
+    entry_point='gym_minigrid.envs:MultiRoomEnvN4S5G14'
 )
