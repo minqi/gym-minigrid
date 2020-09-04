@@ -14,7 +14,7 @@ class ObstructedMazeEnv(RoomGrid):
         num_rooms_visited,
         seed=None
     ):
-        room_size = 6
+        room_size = 7
         max_steps = 4*num_rooms_visited*room_size**2
 
         super().__init__(

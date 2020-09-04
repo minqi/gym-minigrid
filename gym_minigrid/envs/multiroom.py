@@ -288,6 +288,15 @@ class MultiRoomEnvN4Random(MultiRoomEnv):
             gridSize=14,
         )
 
+class MultiRoomEnvN4S7Random(MultiRoomEnv):
+    def __init__(self):
+        super().__init__(
+            minNumRooms=1,
+            maxNumRooms=4,
+            maxRoomSize=7,
+            gridSize=13,
+        )
+
 register(
     id='MiniGrid-MultiRoom-N2-S4-v0',
     entry_point='gym_minigrid.envs:MultiRoomEnvN2S4'
@@ -309,6 +318,11 @@ register(
 )
 
 # Custom levels
+register(
+    id='MiniGrid-MultiRoom-N4-S7-Random-v0',
+    entry_point='gym_minigrid.envs:MultiRoomEnvN4S7Random'
+)
+
 register(
     id='MiniGrid-MultiRoom-N2-S4-G14-v0',
     entry_point='gym_minigrid.envs:MultiRoomEnvN2S4G14'
