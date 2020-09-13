@@ -72,7 +72,9 @@ class RoomGrid(MiniGridEnv):
         num_rows=3,
         num_cols=3,
         max_steps=100,
-        seed=0
+        seed=0,
+        frame_rows=None,
+        frame_cols=None
     ):
         assert room_size > 0
         assert room_size >= 3
@@ -82,8 +84,13 @@ class RoomGrid(MiniGridEnv):
         self.num_rows = num_rows
         self.num_cols = num_cols
 
-        height = (room_size - 1) * num_rows + 1
-        width = (room_size - 1) * num_cols + 1
+        if frame_rows is None:
+            frame_rows = num_rows
+        if frame_cols is None:
+            frame_cols = num_cols
+
+        height = (room_size - 1) * frame_rows + 1
+        width = (room_size - 1) * frame_cols + 1
 
         # By default, this environment has no mission
         self.mission = ''
